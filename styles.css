@@ -100,16 +100,17 @@ img {
 	color: #FFF; /* give all text elements a color of white */
 	}
 	
-	#navigation ul {
+	#navigation > ul {
 		overflow: hidden; /* prevents the great collapse */
 		/*border: 1px solid grey;*/
 		padding: 10px 0;
 		margin: 0; /* overwrites existing margins */
 	}
 	
-	#navigation ul li {
+	#navigation > ul > li {
 		list-style: none;
-		float: left;
+		display: inline-block;
+        /* position: relative; */
 		margin: 0; /* overwrites existing margins */
 		margin-right: 20px; /* gives the items space between */
 	}
@@ -117,15 +118,43 @@ img {
 		#navigation ul li a {
 			color: #FFF; /* let's use white for the default link state */
 			text-decoration: none; /* this disables the default underline */
+            display: block;
 		}
 		
 		#navigation ul li a:hover {
-			color: #EBB700; /* and use bright gold */
+			color: #EBB700; /* bright gold */
 		}
 		
 		#navigation ul li.current a {
-			color: #EBB700; /* and use bright gold */
+			color: #EBB700; /* bright gold */
 		}
+
+        #navigation ul li ul.sub-navigation {
+            position: absolute;
+            z-index: 100;
+            display: none;
+            background-color: #FFF;
+            border-radius: 5px;
+            padding: 4px;
+            box-shadow:  5px 5px 10px #39275B;
+        }
+
+        #navigation ul li:hover ul.sub-navigation {
+            display: block;
+        } 
+
+        #navigation ul li ul.sub-navigation li {
+            list-style-type: none;
+            padding: 4px 10px;
+        }
+
+        #navigation ul li ul.sub-navigation li a {
+            color: #39275B; /* purple */
+        }
+
+        #navigation ul li ul.sub-navigation li a:hover {
+            color: #EBB700; /* bright gold */
+        } 
 	
 #middle {
 	max-width: 940px; /* change to a max-width */
@@ -298,7 +327,7 @@ img {
 	}
 	
 	#navigation ul li {
-		float: none;
+		display: block;
 		padding: 10px;
 		border-top: 1px solid #FFF;
 		margin: 0;
@@ -311,6 +340,33 @@ img {
 	#navigation ul li a {
 		display: block; /* makes the anchor tag extend out */
 	}
+    
+    #navigation ul li ul.sub-navigation {
+            position: inherit;
+            z-index: 100;
+            display: block;
+            background-color: inherit;
+            border-radius: 0px;
+            padding: 4px;
+            box-shadow: none;
+        }
+
+        #navigation ul li:hover ul.sub-navigation {
+            display: block;
+        } 
+
+        #navigation ul li ul.sub-navigation li {
+            list-style-type: none;
+            padding: 4px 10px;
+        }
+
+        #navigation ul li ul.sub-navigation li a {
+            color: #FFFFFF; /* white */
+        }
+
+        #navigation ul li ul.sub-navigation li a:hover {
+            color: #EBB700; /* bright gold */
+        } 
 	
 	#middle {
 		padding: 20px 10px;
